@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35527.113 d17.12
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService.API", "NotificationService.API\NotificationService.API.csproj", "{8BC64AD9-E8EA-4916-A1D2-869D1159D1B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService.Infrastructure", "NotificationService.Infrastructure\NotificationService.Infrastructure.csproj", "{A894E51C-5B44-41AA-B392-C3CB62F7DD15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NotificationService.Core", "NotificationService.Core\NotificationService.Core.csproj", "{C4A0BF29-B1B7-4337-98AE-41A0F5E54451}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8BC64AD9-E8EA-4916-A1D2-869D1159D1B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BC64AD9-E8EA-4916-A1D2-869D1159D1B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BC64AD9-E8EA-4916-A1D2-869D1159D1B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BC64AD9-E8EA-4916-A1D2-869D1159D1B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A894E51C-5B44-41AA-B392-C3CB62F7DD15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A894E51C-5B44-41AA-B392-C3CB62F7DD15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A894E51C-5B44-41AA-B392-C3CB62F7DD15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A894E51C-5B44-41AA-B392-C3CB62F7DD15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4A0BF29-B1B7-4337-98AE-41A0F5E54451}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4A0BF29-B1B7-4337-98AE-41A0F5E54451}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4A0BF29-B1B7-4337-98AE-41A0F5E54451}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4A0BF29-B1B7-4337-98AE-41A0F5E54451}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
