@@ -1,4 +1,4 @@
-﻿using DepartmentService.API.Repositories;
+﻿using NotificationService.API.Repositories;
 using NotificationService.Core.Domain.Entities;
 using NotificationService.Core.RepositoryContracts.SeparateRepository;
 using NotificationService.Infrastructure.AppDbContext;

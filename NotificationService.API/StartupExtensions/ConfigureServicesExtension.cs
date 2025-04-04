@@ -6,6 +6,7 @@ using NotificationService.Core.Services.CommonServiceContract;
 using NotificationService.Infrastructure.AppDbContext;
 using Microsoft.OpenApi.Models;
 using NotificationService.Core.Services.SeparateService;
+using NotificationService.Infrastructure.EmailSender;
 
 namespace NotificationServiceRegistry
 {
@@ -27,8 +28,6 @@ namespace NotificationServiceRegistry
             services.AddScoped(typeof(IService<,>), typeof(Service<,>));
             services.AddScoped<IEmailLogService, EmailLogService>();
             services.AddScoped<IEmailTemplateService, EmailTemplateService>();
-            services.Configure<MailSettings>(builder.Configuration.GetSection("MailSettings"));
-            services.AddTransient<IEmailSender, EmailSender>();
             // cấu hình swagger
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen(options =>
