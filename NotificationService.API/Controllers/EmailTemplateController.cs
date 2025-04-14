@@ -9,10 +9,12 @@ namespace NotificationService.API.Controllers
     public class EmailTemplateController : ControllerBase
     {
         private readonly IEmailTemplateService _emailTemplateService;
+        private readonly IEmailSender _emailSender;
 
-        public EmailTemplateController(IEmailTemplateService emailTemplateService)
+        public EmailTemplateController(IEmailTemplateService emailTemplateService, IEmailSender emailSender)
         {
             _emailTemplateService = emailTemplateService;
+            _emailSender = emailSender;
         }
 
 
@@ -59,5 +61,26 @@ namespace NotificationService.API.Controllers
             var result = await _emailTemplateService.LoadTemplateFromWord(file);
             return Ok(result);
         }
+
+        [HttpPost("send")]
+        public async Task<IActionResult> SendBulkEmail([FromBody] List<PersonalizedEmail> emails)
+        {
+            if (emails == null || !emails.Any())
+            {
+                return BadRequest("Danh sách email không được rỗng.");
+            }
+
+            try
+            {
+                await _emailSender.SendBulkEmailAsync(emails);
+                return Ok(new { Message = "Gửi email thành công." });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Message = "Lỗi khi gửi email.", Error = ex.Message });
+            }
+        }
+
+
     }
 }

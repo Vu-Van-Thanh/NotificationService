@@ -1,6 +1,7 @@
 ﻿using MailKit.Net.Smtp;
 using Microsoft.Extensions.Options;
 using MimeKit;
+using NotificationService.Core.DTO;
 using NotificationService.Infrastructure.EmailSender;
 
 namespace NotificationService.Core.Services.SeparateService
@@ -8,7 +9,7 @@ namespace NotificationService.Core.Services.SeparateService
     public interface IEmailSender
     {
         Task SendEmailAsync(string to, string subject, string body);
-        Task SendBulkEmailAsync(IEnumerable<string> to, string subject, string body);
+        Task SendBulkEmailAsync(IEnumerable<PersonalizedEmail> emails);
     }
     public class EmailSender : IEmailSender
     {
@@ -19,10 +20,39 @@ namespace NotificationService.Core.Services.SeparateService
             _mailSettings = mailSettings.Value;
         }
 
-        public Task SendBulkEmailAsync(IEnumerable<string> to, string subject, string body)
+        public async Task SendBulkEmailAsync(IEnumerable<PersonalizedEmail> emails)
         {
-            throw new NotImplementedException();
+            using var smtp = new SmtpClient();
+            await smtp.ConnectAsync(_mailSettings.SmtpServer, _mailSettings.Port, _mailSettings.UseSSL);
+            await smtp.AuthenticateAsync(_mailSettings.Username, _mailSettings.Password);
+
+            foreach (var item in emails)
+            {
+                var message = new MimeMessage();
+                message.From.Add(new MailboxAddress(_mailSettings.SenderName, _mailSettings.SenderEmail));
+                message.To.Add(new MailboxAddress(item.RecipientEmail, item.RecipientEmail));
+                message.Subject = item.Subject;
+
+                var builder = new BodyBuilder
+                {
+                    HtmlBody = item.HtmlBody
+                };
+
+                message.Body = builder.ToMessageBody();
+
+                try
+                {
+                    await smtp.SendAsync(message);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Failed to send email to {item.RecipientEmail}: {ex.Message}");
+                }
+            }
+
+            await smtp.DisconnectAsync(true);
         }
+
 
         public async Task SendEmailAsync(string to, string subject, string htmlBody)
         {

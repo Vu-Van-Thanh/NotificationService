@@ -3,7 +3,7 @@
         "TemplateId": "BCB713DA-C191-44E7-AF41-1A2C82A6F892",
         "TemplateName": "Payroll Notification",
         "TemplateHeader": "Thông báo lương tháng",
-        "TemplateBody": "Chào [EmployeeName],<br><br>Bạn đã làm việc được [WorkingDays] ngày trong tháng này.<br>Tổng lương của bạn: [Salary] VND.<br>Hãy kiểm tra bảng lương chi tiết tại: <a href=\"[PayrollLink]\">Bảng lương</a><br><br>Trân trọng,<br>Phòng Nhân sự",
+        "TemplateBody": "Chào [EmployeeName],<br><br>Bạn đã làm việc được [WorkingDays] ngày trong tháng này.<br>Tổng lương của bạn: [Salary] VND.<br>Hãy kiểm tra bảng lương chi tiết tại: <a href=\"[PayrollLink]\">Bảng lương</a><img src=\"[PayrollUrl]\" alt=\"Avatar\" width=\"120\" height=\"120\" style=\"border-radius:50%;\"><br><br>Trân trọng,<br>Phòng Nhân sự",
         "SearchSQLCMD": "SELECT EmployeeName, WorkingDays, Salary, PayrollLink FROM PayrollData WHERE DepartmentId = @DepartmentId",
         "DepartmentId": null
     },
