@@ -73,6 +73,11 @@ namespace NotificationService.Infrastructure.Kafka.Consumers
                         var importData = JsonSerializer.Deserialize<KafkaRequest<MailBoxCreate>>(message);
                         await importHandler.HandleAsync(importData);
                         break;
+                    case "get-template":
+                        var getTemplateHandler = scope.ServiceProvider.GetRequiredService<IKafkaHandler<KafkaRequest<TemplateRequest>>>();
+                        var getTemplateData = JsonSerializer.Deserialize<KafkaRequest<TemplateRequest>>(message);
+                        await getTemplateHandler.HandleAsync(getTemplateData);
+                        break;
 
                    
                 }
