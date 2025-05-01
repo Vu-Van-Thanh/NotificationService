@@ -20,5 +20,11 @@ namespace NotificationService.Infrastructure.Repositories
             return await _context.Mailboxes
                 .FirstOrDefaultAsync(m => m.EmployeeEmail == email);
         }
+
+        public async Task<Mailbox> GetByEmployeeIdAsync(string employeeId)
+        {
+            return await _context.Mailboxes
+                .FirstOrDefaultAsync(m => m.EmployeeId == employeeId);
+        }
     }
 } 

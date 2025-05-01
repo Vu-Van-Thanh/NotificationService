@@ -14,7 +14,7 @@ namespace NotificationService.Infrastructure.Repositories
         {
             _context = context;
         }
-        
+
         public async Task<IEnumerable<Email>> GetByMailboxIdAsync(Guid mailboxId)
         {
             return await _context.Emails
@@ -28,5 +28,7 @@ namespace NotificationService.Infrastructure.Repositories
                 .Where(e => e.MailboxId == mailboxId && !e.IsRead)
                 .ToListAsync();
         }
+
+        
     }
 } 

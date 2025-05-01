@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using EmployeeService.API.Kafka.Producer;
 using NotificationService.Core.DTO;
 using NotificationService.Core.Services;
+using NotificationService.Core.Services.SeparateService;
+using NotificationService.Infrastructure.Kafka.KafkaEntity;
 
 namespace NotificationService.Infrastructure.Kafka.Handlers
 {
@@ -28,7 +31,7 @@ namespace NotificationService.Infrastructure.Kafka.Handlers
                 Timestamp = DateTime.UtcNow,
                 Filter = new MailBoxCreateResponse { MailboxId = mailbox.MailboxId.ToString(), EmployeeEmail = mailbox.EmployeeEmail, IsActive = mailbox.IsActive, CreatedAt = mailbox.CreatedAt }
             };
-            await _eventProducer.ProduceAsync("MailBoxCreated", null, "MailBoxCreated", kafkaResponse);
+            await _eventProducer.PublishAsync("MailBoxCreated", null, "MailBoxCreated", kafkaResponse);
 
         }
 

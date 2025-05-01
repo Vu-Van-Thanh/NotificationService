@@ -22,7 +22,7 @@ namespace NotificationService.Core.DTO
         public int StageNumber { get; set; }
         public string SqlCommand { get; set; }
         public List<(string Variable, int Stage)> DependenceVariables { get; set; }
-        public List<string> Variables { get; set; }
+        public List<string> OutputVariables { get; set; }
         public List<int> DependencyStages { get; set; }
     }
 }

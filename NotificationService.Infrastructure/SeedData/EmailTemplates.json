@@ -1,34 +1,34 @@
 ﻿[
-    {
-        "TemplateId": "BCB713DA-C191-44E7-AF41-1A2C82A6F892",
-        "TemplateName": "Payroll Notification",
-        "TemplateHeader": "Thông báo lương tháng",
-        "TemplateBody": "Chào [EmployeeName],<br><br>Bạn đã làm việc được [WorkingDays] ngày trong tháng này.<br>Tổng lương của bạn: [Salary] VND.<br>Hãy kiểm tra bảng lương chi tiết tại: <a href=\"[PayrollLink]\">Bảng lương</a><img src=\"[PayrollUrl]\" alt=\"Avatar\" width=\"120\" height=\"120\" style=\"border-radius:50%;\"><br><br>Trân trọng,<br>Phòng Nhân sự",
-        "SearchSQLCMD": "SELECT EmployeeName, WorkingDays, Salary, PayrollLink FROM PayrollData WHERE DepartmentId = @DepartmentId",
-        "DepartmentId": null
-    },
-    {
-        "TemplateId": "CF3DDCF8-2F5C-400A-BA5F-B57C5BB9CEEA",
-        "TemplateName": "Welcome New Employee",
-        "TemplateHeader": "Chào mừng nhân viên mới",
-        "TemplateBody": "Chào [EmployeeName],<br><br>Chào mừng bạn đến với công ty [CompanyName]!<br>Ngày làm việc đầu tiên của bạn là: [StartDate].<br>Bạn sẽ làm việc tại phòng ban: [Department].<br><br>Hãy liên hệ [HRContact] nếu bạn có bất kỳ thắc mắc nào.<br><br>Chúc bạn một khởi đầu thuận lợi!<br>Phòng Nhân sự",
-        "SearchSQLCMD": "SELECT EmployeeName, CompanyName, StartDate, Department, HRContact FROM Employees WHERE EmployeeId = @EmployeeId",
-        "DepartmentId": null
-    },
-    {
-        "TemplateId": "08695AB8-9021-4564-857A-029C848912E7",
-        "TemplateName": "Annual Leave Reminder",
-        "TemplateHeader": "Nhắc nhở ngày nghỉ phép",
-        "TemplateBody": "Chào [EmployeeName],<br><br>Bạn hiện có [RemainingLeaves] ngày nghỉ phép còn lại trong năm.<br>Hãy lên kế hoạch nghỉ phép sớm để tránh hết hạn!<br><br>Trân trọng,<br>Phòng Nhân sự",
-        "SearchSQLCMD": "SELECT EmployeeName, RemainingLeaves FROM EmployeeLeaves WHERE EmployeeId = @EmployeeId",
-        "DepartmentId": null
-    },
-    {
-        "TemplateId": "F727EDC7-B524-4322-946C-578117F6B434",
-        "TemplateName": "IT Security Alert",
-        "TemplateHeader": "Cảnh báo bảo mật",
-        "TemplateBody": "Chào [EmployeeName],<br><br>Chúng tôi phát hiện một hoạt động đăng nhập đáng ngờ từ [IPAddress].<br>Nếu đây không phải là bạn, vui lòng đổi mật khẩu ngay lập tức và báo cáo với IT.<br><br>Trân trọng,<br>Phòng IT",
-        "SearchSQLCMD": "SELECT EmployeeName, IPAddress FROM SecurityLogs WHERE EmployeeId = @EmployeeId",
-        "DepartmentId": null
-    }
+  {
+    "TemplateId": "BCB713DA-C191-44E7-AF41-1A2C82A6F892",
+    "TemplateName": "Payroll Notification",
+    "TemplateHeader": "Thông báo lương tháng",
+    "TemplateBody": "Chào [EmployeeName],<br><br>Bạn đã làm việc được [WorkingDays] ngày trong tháng này.<br>Tổng lương của bạn: [Salary] VND.<br>Hãy kiểm tra bảng lương chi tiết tại: <a href=\"[PayrollLink]\">Bảng lương</a><img src=\"[PayrollUrl]\" alt=\"Avatar\" width=\"120\" height=\"120\" style=\"border-radius:50%;\"><br><br>Trân trọng,<br>Phòng Nhân sự",
+    "SearchSQLCMD": "SELECT EmployeeName, WorkingDays, Salary, PayrollLink FROM PayrollData WHERE DepartmentId = @DepartmentId",
+    "DepartmentId": null
+  },
+  {
+    "TemplateId": "CF3DDCF8-2F5C-400A-BA5F-B57C5BB9CEEA",
+    "TemplateName": "Welcome New Employee",
+    "TemplateHeader": "Chào mừng nhân viên mới",
+    "TemplateBody": "Chào [EmployeeName],<br><br>Chào mừng bạn đến với công ty [CompanyName]!<br>Ngày làm việc đầu tiên của bạn là: [StartDate].<br>Bạn sẽ làm việc tại phòng ban: [Department].<br><br>Hãy liên hệ [HRContact] nếu bạn có bất kỳ thắc mắc nào.<br><br>Chúc bạn một khởi đầu thuận lợi!<br>Phòng Nhân sự",
+    "SearchSQLCMD": "SELECT EmployeeName, CompanyName, StartDate, Department, HRContact FROM Employees WHERE EmployeeId = @EmployeeId",
+    "DepartmentId": null
+  },
+  {
+    "TemplateId": "08695AB8-9021-4564-857A-029C848912E7",
+    "TemplateName": "Annual Leave Reminder",
+    "TemplateHeader": "Nhắc nhở ngày nghỉ phép",
+    "TemplateBody": "Chào [EmployeeName],<br><br>Bạn hiện có [RemainingLeaves] ngày nghỉ phép còn lại trong năm.<br>Hãy lên kế hoạch nghỉ phép sớm để tránh hết hạn!<br><br>Trân trọng,<br>Phòng Nhân sự",
+    "SearchSQLCMD": "SELECT EmployeeName, RemainingLeaves FROM EmployeeLeaves WHERE EmployeeId = @EmployeeId",
+    "DepartmentId": null
+  },
+  {
+    "TemplateId": "F727EDC7-B524-4322-946C-578117F6B434",
+    "TemplateName": "IT Security Alert",
+    "TemplateHeader": "Cảnh báo bảo mật",
+    "TemplateBody": "Chào [EmployeeName],<br><br>Chúng tôi phát hiện một hoạt động đăng nhập đáng ngờ từ [IPAddress].<br>Nếu đây không phải là bạn, vui lòng đổi mật khẩu ngay lập tức và báo cáo với IT.<br><br>Trân trọng,<br>Phòng IT",
+    "SearchSQLCMD": "SELECT EmployeeName, IPAddress FROM SecurityLogs WHERE EmployeeId = @EmployeeId",
+    "DepartmentId": null
+  }
 ]

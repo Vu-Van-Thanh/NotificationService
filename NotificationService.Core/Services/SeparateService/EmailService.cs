@@ -84,5 +84,7 @@ namespace NotificationService.Core.Services.SeparateService
             var result = await _emailRepository.UpsertAsync(email, e => e.EmailId == emailId);
             return _mapper.Map<EmailDTO>(result);
         }
+
+        
     }
 } 

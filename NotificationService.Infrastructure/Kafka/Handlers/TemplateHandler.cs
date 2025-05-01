@@ -2,9 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using EmployeeService.API.Kafka.Producer;
 using NotificationService.Core.DTO;
 using NotificationService.Core.Services;
+using NotificationService.Core.Services.SeparateService;
+using NotificationService.Infrastructure.Kafka.KafkaEntity;
 
 namespace NotificationService.Infrastructure.Kafka.Handlers
 {
@@ -20,7 +24,7 @@ namespace NotificationService.Infrastructure.Kafka.Handlers
         }
         public async Task HandleAsync(KafkaRequest<TemplateRequest> message)
         {
-            EmailTemplateDTO template = await _emailTemplateService.GetEmailTemplateByIdAsync(message.Filter.TemplateId);
+            EmailTemplateDTO template = await _emailTemplateService.GetByIdAsync(message.Filter.TemplateId);
             List<SearchStage> searchStages = ParseSearchSQLCMD(template.SearchSQLCMD);
             KafkaResponse<TemplateDTO> kafkaResponse = new KafkaResponse<TemplateDTO>
             {
@@ -29,7 +33,7 @@ namespace NotificationService.Infrastructure.Kafka.Handlers
                 Timestamp = DateTime.UtcNow,
                 Filter = new TemplateDTO { TemplateId = template.TemplateId, TemplateName = template.TemplateName, TemplateBody = template.TemplateBody, TemplateHeader = template.TemplateHeader, SearchStages = searchStages, DepartmentId = template.DepartmentId }
             };
-            await _eventProducer.ProduceAsync("TemplateInfo", null, "TemplateInfo", kafkaResponse);
+            await _eventProducer.PublishAsync("TemplateInfo", null, "TemplateInfo", kafkaResponse);
 
         }
 

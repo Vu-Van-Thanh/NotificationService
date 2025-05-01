@@ -11,6 +11,7 @@ namespace NotificationService.Core.Services.SeparateService
     {
         Task<MailboxDTO> GetByEmployeeEmailAsync(string email);
         Task<MailboxDTO> CreateMailboxForEmployeeAsync(string employeeEmail, string name, string description);
+        Task<Guid> GetMailboxIdByEmployeeIdAsync(string employeeId);
     }
 
     public class MailboxService : Service<Mailbox, MailboxDTO>, IMailboxService
@@ -45,6 +46,12 @@ namespace NotificationService.Core.Services.SeparateService
 
             var result = await _mailboxRepository.UpsertAsync(mailbox, m => m.EmployeeEmail == employeeEmail);
             return _mapper.Map<MailboxDTO>(result);
+        }
+
+        public async Task<Guid> GetMailboxIdByEmployeeIdAsync(string employeeId)
+        {
+            var mailbox = await _mailboxRepository.GetByEmployeeIdAsync(employeeId);
+            return mailbox.MailboxId;
         }
     }
 } 

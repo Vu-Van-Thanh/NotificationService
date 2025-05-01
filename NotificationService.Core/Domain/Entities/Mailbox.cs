@@ -7,6 +7,7 @@ namespace NotificationService.Core.Domain.Entities
         [Key]
         public Guid MailboxId { get; set; }
         public string EmployeeEmail { get; set; }
+        public string EmployeeId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public bool IsActive { get; set; } = true;

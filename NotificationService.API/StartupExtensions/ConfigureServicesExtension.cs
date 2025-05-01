@@ -9,6 +9,13 @@ using NotificationService.Core.Services.SeparateService;
 using NotificationService.Infrastructure.EmailSender;
 using NotificationService.Core.RepositoryContracts.SeparateRepository;
 using NotificationService.Infrastructure.Repositories;
+using NotificationService.Infrastructure.Kafka.Handlers;
+using NotificationService.Infrastructure.Kafka.KafkaEntity;
+using EmployeeService.API.Kafka.Producer;
+using NotificationService.Infrastructure.Kafka.Producer;
+using NotificationService.Infrastructure.Kafka.Consumers.Manual;
+using NotificationService.Infrastructure.Kafka.Consumers;
+using NotificationService.Core.DTO;
 
 namespace NotificationServiceRegistry
 {
@@ -38,9 +45,9 @@ namespace NotificationServiceRegistry
             services.AddScoped<IEmailManagerService, EmailManagerService>();
             services.AddScoped<IKafkaHandler<KafkaRequest<MailBoxCreate>>, MailBoxCreateHandler>();
             services.AddScoped<IEventProducer, NotifycationProducer>();
-            services.AddScoped<IEventConsumer, NotifycationConsumer>();
             services.AddScoped<IKafkaHandler<KafkaRequest<TemplateRequest>>, TemplateHandler>();
-            
+            services.AddScoped<IKafkaHandler<KafkaRequest<List<MailContent>>>, SendMailHandler>();
+
             // Đăng ký AutoMapper
             services.AddAutoMapper(typeof(MappingProfile));
             

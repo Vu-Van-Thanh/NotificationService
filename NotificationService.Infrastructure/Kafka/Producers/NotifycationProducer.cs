@@ -1,5 +1,5 @@
 ﻿using Confluent.Kafka;
-using EmployeeService.Infrastructure.Kafka;
+using EmployeeService.API.Kafka.Producer;
 using Microsoft.Extensions.Options;
 using System.Text.Json;
 

@@ -5,5 +5,6 @@ namespace NotificationService.Core.RepositoryContracts.SeparateRepository
     public interface IMailboxRepository : IRepository<Mailbox>
     {
         Task<Mailbox> GetByEmployeeEmailAsync(string email);
+        Task<Mailbox> GetByEmployeeIdAsync(string employeeId);
     }
 } 

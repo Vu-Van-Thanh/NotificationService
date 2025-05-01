@@ -12,6 +12,7 @@ namespace NotificationService.Core.Services.SeparateService
     public interface IEmailTemplateService : IService<EmailTemplate, EmailTemplateDTO>
     {
         Task<EmailTemplateDTO> LoadTemplateFromWord(IFormFile formFile);
+       
     }
     public class EmailTemplateService : Service<EmailTemplate, EmailTemplateDTO>, IEmailTemplateService
     {

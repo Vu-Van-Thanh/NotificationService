@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
+using NotificationService.Infrastructure.Kafka.KafkaEntity;
 
 namespace NotificationService.Infrastructure.Kafka.Consumers
 {
@@ -77,6 +78,11 @@ namespace NotificationService.Infrastructure.Kafka.Consumers
                         var getTemplateHandler = scope.ServiceProvider.GetRequiredService<IKafkaHandler<KafkaRequest<TemplateRequest>>>();
                         var getTemplateData = JsonSerializer.Deserialize<KafkaRequest<TemplateRequest>>(message);
                         await getTemplateHandler.HandleAsync(getTemplateData);
+                        break;
+                    case "send-mail":
+                        var sendMailHandler = scope.ServiceProvider.GetRequiredService<IKafkaHandler<KafkaRequest<List<MailContent>>>>();
+                        var sendMailData = JsonSerializer.Deserialize<KafkaRequest<List<MailContent>>>(message);
+                        await sendMailHandler.HandleAsync(sendMailData);
                         break;
 
                    
