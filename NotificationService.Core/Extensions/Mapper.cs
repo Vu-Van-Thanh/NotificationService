@@ -12,8 +12,18 @@ namespace NotificationService.Core.Extensions
             CreateMap<EmailLogDTO, EmailLog>();
             CreateMap<EmailTemplateDTO, EmailTemplate>();
             CreateMap<EmailTemplate, EmailTemplateDTO>();
-           
-
+            
+            CreateMap<Mailbox, MailboxDTO>();
+            CreateMap<MailboxDTO, Mailbox>();
+            
+            CreateMap<Email, EmailDTO>();
+            CreateMap<EmailDTO, Email>();
+            
+            CreateMap<MailboxManager, MailboxManagerDTO>();
+            CreateMap<MailboxManagerDTO, MailboxManager>();
+            
+            CreateMap<EmailManager, EmailManagerDTO>();
+            CreateMap<EmailManagerDTO, EmailManager>();
         }
     }
 }

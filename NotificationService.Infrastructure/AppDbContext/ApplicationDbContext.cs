@@ -13,12 +13,17 @@ namespace NotificationService.Infrastructure.AppDbContext
 
         public DbSet<EmailTemplate> EmailTemplates { get; set; }
         public DbSet<EmailLog> EmailLog { get; set; }
+        
+        // Thêm DbSet cho các thực thể mới
+        public DbSet<Mailbox> Mailboxes { get; set; }
+        public DbSet<Email> Emails { get; set; }
+        public DbSet<MailboxManager> MailboxManagers { get; set; }
+        public DbSet<EmailManager> EmailManagers { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder builder)
         {
-
             base.OnModelCreating(builder);
            
-
             // Seed data
             var bases = LoadSeedData<EmailTemplate>("SeedData/EmailTemplates.json");
             builder.Entity<EmailTemplate>().HasData(bases);
@@ -26,7 +31,24 @@ namespace NotificationService.Infrastructure.AppDbContext
             var hists = LoadSeedData<EmailLog>("SeedData/EmailLogs.json");
             builder.Entity<EmailLog>().HasData(hists);
 
-            
+            // Cấu hình relationships
+            builder.Entity<Mailbox>()
+                .HasMany(m => m.Emails)
+                .WithOne(e => e.Mailbox)
+                .HasForeignKey(e => e.MailboxId)
+                .OnDelete(DeleteBehavior.Cascade);
+                
+            builder.Entity<Mailbox>()
+                .HasMany(m => m.Managers)
+                .WithOne(mm => mm.Mailbox)
+                .HasForeignKey(mm => mm.MailboxId)
+                .OnDelete(DeleteBehavior.Cascade);
+                
+            builder.Entity<Email>()
+                .HasMany(e => e.EmailManagers)
+                .WithOne(em => em.Email)
+                .HasForeignKey(em => em.EmailId)
+                .OnDelete(DeleteBehavior.Cascade);
         }
 
         private static List<T> LoadSeedData<T>(string filePath)
