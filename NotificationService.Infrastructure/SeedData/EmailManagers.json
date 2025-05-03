@@ -1,0 +1,29 @@
+[
+  {
+    "EmailManagerId": "8727D68F-52CB-4E1E-AC38-AC16B195D9C5",
+    "EmailId": "EDC6CE3A-F39D-4046-8492-566FF41AC305",
+    "ManagerEmail": "nguyenvana@hrm.tv.com",
+    "ManagerName": "Pham Van A",
+    "Action": "Read",
+    "ActionDate": "2025-05-02T09:00:00Z",
+    "Notes": "Opened email upon arrival"
+  },
+  {
+    "EmailManagerId": "CE9A87D5-11AC-4179-B78E-DC87C6DC8759",
+    "EmailId": "1FC13791-7CA7-4BBF-8EAE-245666FFBCC1",
+    "ManagerEmail": "nguyenvana@hrm.tv.com",
+    "ManagerName": "Nguyen Van A",
+    "Action": "Forward",
+    "ActionDate": "2025-05-01T12:30:00Z",
+    "Notes": "Forwarded to finance department"
+  },
+  {
+    "EmailManagerId": "6D7BFCF4-26E0-4F18-BD3E-C2F616E1E509",
+    "EmailId": "62D38853-4303-425B-AF87-1C41A9607C1C",
+    "ManagerEmail": "nguyenvana@hrm.tv.com",
+    "ManagerName": "Nguyen Van A",
+    "Action": "Reply",
+    "ActionDate": "2025-05-03T08:00:00Z",
+    "Notes": "Confirmed attendance"
+  }
+]

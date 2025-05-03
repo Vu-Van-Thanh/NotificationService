@@ -11,7 +11,7 @@ namespace NotificationService.Core.Domain.Entities
         public Guid EmailLogId { get; set; }
         public string ReceiveMail { get; set; }
         
-        public Guid TemaplateId { get; set; }
+        public Guid TemplateId { get; set; }
 
         public string EmailHeader { get; set; } 
         public string EmailBody { get; set; }

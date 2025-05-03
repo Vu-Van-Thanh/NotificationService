@@ -10,7 +10,7 @@ namespace NotificationService.Core.Services.SeparateService
     public interface IMailboxService : IService<Mailbox, MailboxDTO>
     {
         Task<MailboxDTO> GetByEmployeeEmailAsync(string email);
-        Task<MailboxDTO> CreateMailboxForEmployeeAsync(string employeeEmail, string name, string description);
+        Task<MailboxDTO> CreateMailboxForEmployeeAsync(string EmployeeId,string employeeEmail, string name, string description);
         Task<Guid> GetMailboxIdByEmployeeIdAsync(string employeeId);
     }
 
@@ -32,11 +32,12 @@ namespace NotificationService.Core.Services.SeparateService
             return _mapper.Map<MailboxDTO>(mailbox);
         }
 
-        public async Task<MailboxDTO> CreateMailboxForEmployeeAsync(string employeeEmail, string name, string description)
+        public async Task<MailboxDTO> CreateMailboxForEmployeeAsync(string EmployeeId, string employeeEmail, string name, string description)
         {
             var mailbox = new Mailbox
             {
                 MailboxId = Guid.NewGuid(),
+                EmployeeId = EmployeeId,
                 EmployeeEmail = employeeEmail,
                 Name = name,
                 Description = description,
@@ -44,7 +45,7 @@ namespace NotificationService.Core.Services.SeparateService
                 CreatedAt = DateTime.UtcNow
             };
 
-            var result = await _mailboxRepository.UpsertAsync(mailbox, m => m.EmployeeEmail == employeeEmail);
+            var result = await _mailboxRepository.UpsertAsync(mailbox, m => m.EmployeeId == EmployeeId);
             return _mapper.Map<MailboxDTO>(result);
         }
 

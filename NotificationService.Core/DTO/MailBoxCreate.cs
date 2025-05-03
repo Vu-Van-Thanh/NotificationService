@@ -4,5 +4,6 @@ namespace NotificationService.Core.DTO
     {
         public string EmployeeEmail { get; set; }
         public string Name { get; set; }
+        public string EmployeeId { get; set; }
     }
 }

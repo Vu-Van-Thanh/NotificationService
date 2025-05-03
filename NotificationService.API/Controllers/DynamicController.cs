@@ -24,7 +24,7 @@ namespace EmployeeService.API.Controllers
                 using (var connection = new SqlConnection(_connectionString))
                 {
                     connection.Open();
-                    var result = connection.Query(sqlQuery); // Dùng Dapper để thực thi câu SQL
+                    var result = connection.Query(sqlQuery); 
                     return Ok(result);
                 }
             }

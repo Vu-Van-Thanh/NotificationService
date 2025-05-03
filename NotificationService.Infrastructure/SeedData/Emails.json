@@ -1,0 +1,38 @@
+[
+  {
+    "EmailId": "EDC6CE3A-F39D-4046-8492-566FF41AC305" ,
+    "Subject": "Welcome to the team",
+    "Body": "Hi Tran Thi B, welcome to HRM-THANHVU!",
+    "Sender": "nguyenvana@hrm.tv.com",
+    "ReceivedAt": "2025-05-02T08:30:00Z",
+    "IsRead": false,
+    "IsStarred": false,
+    "IsDeleted": false,
+    "Status": 0,
+    "MailboxId": "7AE3D307-A006-4B26-B072-54455CF1A63C"
+  },
+  {
+    "EmailId": "1FC13791-7CA7-4BBF-8EAE-245666FFBCC1" ,
+    "Subject": "Payroll Processed",
+    "Body": "Your payroll for April 2025 has been processed.",
+    "Sender": "nguyenvana@hrm.tv.com",
+    "ReceivedAt": "2025-05-01T12:00:00Z",
+    "IsRead": true,
+    "IsStarred": true,
+    "IsDeleted": false,
+    "Status": 1,
+    "MailboxId": "7AE3D307-A006-4B26-B072-54455CF1A63C"
+  },
+  {
+    "EmailId":  "62D38853-4303-425B-AF87-1C41A9607C1C" ,
+    "Subject": "Weekly Meeting Reminder",
+    "Body": "Reminder: Weekly team meeting on Monday at 9 AM.",
+    "Sender": "tranthib@hrm.tv.com",
+    "ReceivedAt": "2025-05-03T07:45:00Z",
+    "IsRead": false,
+    "IsStarred": false,
+    "IsDeleted": false,
+    "Status": 0,
+    "MailboxId": "A780E17C-F230-436F-B82E-14407D10EC06"
+  }
+]

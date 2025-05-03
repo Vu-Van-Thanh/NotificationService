@@ -4,7 +4,7 @@ using NotificationService.Core.Services.SeparateService;
 
 namespace NotificationService.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class EmailController : ControllerBase
     {

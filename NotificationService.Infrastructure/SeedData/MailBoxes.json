@@ -1,0 +1,22 @@
+[
+  {
+    "MailboxId": "7AE3D307-A006-4B26-B072-54455CF1A63C",
+    "EmployeeEmail": "tranthib@hrm.tv.com",
+    "EmployeeId": "F5ECDC17-5382-4A81-470C-08DD7F1BD68D",
+    "Name": "Tran Thi B Mailbox",
+    "Description": "Mailbox for John Doe",
+    "IsActive": true,
+    "CreatedAt": "2025-05-03T00:00:00Z",
+    "UpdatedAt": null
+  },
+  {
+    "MailboxId": "A780E17C-F230-436F-B82E-14407D10EC06",
+    "EmployeeEmail": "nguyenvana@hrm.tv.com",
+    "EmployeeId": "540195F8-B154-4D15-618F-08DD85841FA5",
+    "Name": "Nguyen Van A Mailbox",
+    "Description": "Mailbox for Jane Smith",
+    "IsActive": true,
+    "CreatedAt": "2025-05-03T00:00:00Z",
+    "UpdatedAt": null
+  }
+]

@@ -56,7 +56,7 @@ namespace NotificationService.API.Controllers
         }
 
         [HttpPost("upload")]
-        public async Task<IActionResult> UploadTemplate([FromForm] IFormFile file)
+        public async Task<IActionResult> UploadTemplate([FromBody] IFormFile file)
         {
             var result = await _emailTemplateService.LoadTemplateFromWord(file);
             return Ok(result);

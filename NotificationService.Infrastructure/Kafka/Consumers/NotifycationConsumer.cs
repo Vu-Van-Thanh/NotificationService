@@ -19,18 +19,7 @@ namespace NotificationService.Infrastructure.Kafka.Consumers
         public NotifycationConsumer(IConfiguration config, IServiceProvider serviceProvider, IOptions<KafkaSettings> kafkaOptions)
         {
             _kafkaSettings = kafkaOptions.Value;
-            /*ConsumerConfig consumerConfig = new ConsumerConfig
-            {
-                BootstrapServers = _kafkaSettings?.BootstrapServers,
-                GroupId = _kafkaSettings?.GroupId,
-                AutoOffsetReset = AutoOffsetReset.Earliest
-            };
-            List<string> allTopics = _kafkaSettings.ConsumeTopicNames
-                            .SelectMany(entry => entry.Value)
-                            .Distinct()
-                            .ToList();
-            _consumer = new ConsumerBuilder<string, string>(consumerConfig).Build();
-            _consumer.Subscribe(allTopics);*/
+           
             try
             {
                 ConsumerConfig consumerConfig = new ConsumerConfig

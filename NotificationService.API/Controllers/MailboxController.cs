@@ -4,7 +4,7 @@ using NotificationService.Core.Services.SeparateService;
 
 namespace NotificationService.API.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class MailboxController : ControllerBase
     {
@@ -57,6 +57,7 @@ namespace NotificationService.API.Controllers
         public async Task<IActionResult> CreateForEmployee([FromBody] CreateMailboxRequest request)
         {
             var result = await _mailboxService.CreateMailboxForEmployeeAsync(
+                request.EmployeeId,
                 request.EmployeeEmail, 
                 request.Name, 
                 request.Description);
@@ -77,5 +78,6 @@ namespace NotificationService.API.Controllers
         public string EmployeeEmail { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        public string EmployeeId { get; set; }
     }
 } 

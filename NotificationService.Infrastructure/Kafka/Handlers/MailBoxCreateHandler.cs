@@ -23,7 +23,7 @@ namespace NotificationService.Infrastructure.Kafka.Handlers
         }
         public async Task HandleAsync(KafkaRequest<MailBoxCreate> message)
         {
-            MailboxDTO mailbox = await _mailboxService.CreateMailboxForEmployeeAsync(message.Filter.EmployeeEmail, message.Filter.Name, "Tạo hòm thư cho user");
+            MailboxDTO mailbox = await _mailboxService.CreateMailboxForEmployeeAsync(message.Filter.EmployeeId,message.Filter.EmployeeEmail, message.Filter.Name, "Tạo hòm thư cho user");
             KafkaResponse<MailBoxCreateResponse> kafkaResponse = new KafkaResponse<MailBoxCreateResponse>
             {
                 RequestType = "MailBoxCreated",
@@ -31,7 +31,7 @@ namespace NotificationService.Infrastructure.Kafka.Handlers
                 Timestamp = DateTime.UtcNow,
                 Filter = new MailBoxCreateResponse { MailboxId = mailbox.MailboxId.ToString(), EmployeeEmail = mailbox.EmployeeEmail, IsActive = mailbox.IsActive, CreatedAt = mailbox.CreatedAt }
             };
-            await _eventProducer.PublishAsync("MailBoxCreated", null, "MailBoxCreated", kafkaResponse);
+            await _eventProducer.PublishAsync("mailbox-created", null, "mailbox-created", kafkaResponse);
 
         }
 

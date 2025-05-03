@@ -16,6 +16,7 @@ using NotificationService.Infrastructure.Kafka.Producer;
 using NotificationService.Infrastructure.Kafka.Consumers.Manual;
 using NotificationService.Infrastructure.Kafka.Consumers;
 using NotificationService.Core.DTO;
+using NotificationService.Infrastructure.Kafka;
 
 namespace NotificationServiceRegistry
 {
@@ -45,6 +46,7 @@ namespace NotificationServiceRegistry
             services.AddScoped<IEventProducer, NotifycationProducer>();
             services.AddScoped<IKafkaHandler<KafkaRequest<TemplateRequest>>, TemplateHandler>();
             services.AddScoped<IKafkaHandler<KafkaRequest<List<MailContent>>>, SendMailHandler>();
+            services.Configure<KafkaSettings>(configuration.GetSection("Kafka"));
             services.AddHostedService<NotifycationConsumer>();
 
             // Đăng ký AutoMapper

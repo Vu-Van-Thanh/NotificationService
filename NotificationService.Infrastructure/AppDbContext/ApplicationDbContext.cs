@@ -14,7 +14,6 @@ namespace NotificationService.Infrastructure.AppDbContext
         public DbSet<EmailTemplate> EmailTemplates { get; set; }
         public DbSet<EmailLog> EmailLog { get; set; }
         
-        // Thêm DbSet cho các thực thể mới
         public DbSet<Mailbox> Mailboxes { get; set; }
         public DbSet<Email> Emails { get; set; }
         public DbSet<EmailManager> EmailManagers { get; set; }
@@ -29,6 +28,12 @@ namespace NotificationService.Infrastructure.AppDbContext
 
             var hists = LoadSeedData<EmailLog>("SeedData/EmailLogs.json");
             builder.Entity<EmailLog>().HasData(hists);
+            var mailboxes = LoadSeedData<Mailbox>("SeedData/MailBoxes.json");
+            builder.Entity<Mailbox>().HasData(mailboxes);
+            var emails = LoadSeedData<Email>("SeedData/Emails.json");
+            builder.Entity<Email>().HasData(emails);
+            var emailManagers = LoadSeedData<EmailManager>("SeedData/EmailManagers.json");
+            builder.Entity<EmailManager>().HasData(emailManagers);
 
             // Cấu hình relationships
             builder.Entity<Mailbox>()
