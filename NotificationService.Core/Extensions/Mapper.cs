@@ -19,8 +19,7 @@ namespace NotificationService.Core.Extensions
             CreateMap<Email, EmailDTO>();
             CreateMap<EmailDTO, Email>();
             
-            CreateMap<MailboxManager, MailboxManagerDTO>();
-            CreateMap<MailboxManagerDTO, MailboxManager>();
+            
             
             CreateMap<EmailManager, EmailManagerDTO>();
             CreateMap<EmailManagerDTO, EmailManager>();

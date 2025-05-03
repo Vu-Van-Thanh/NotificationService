@@ -16,6 +16,5 @@ namespace NotificationService.Core.Domain.Entities
 
         // Navigation properties
         public virtual ICollection<Email> Emails { get; set; } = new List<Email>();
-        public virtual ICollection<MailboxManager> Managers { get; set; } = new List<MailboxManager>();
     }
 } 

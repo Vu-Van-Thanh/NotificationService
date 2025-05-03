@@ -17,7 +17,6 @@ namespace NotificationService.Infrastructure.AppDbContext
         // Thêm DbSet cho các thực thể mới
         public DbSet<Mailbox> Mailboxes { get; set; }
         public DbSet<Email> Emails { get; set; }
-        public DbSet<MailboxManager> MailboxManagers { get; set; }
         public DbSet<EmailManager> EmailManagers { get; set; }
         
         protected override void OnModelCreating(ModelBuilder builder)
@@ -38,11 +37,7 @@ namespace NotificationService.Infrastructure.AppDbContext
                 .HasForeignKey(e => e.MailboxId)
                 .OnDelete(DeleteBehavior.Cascade);
                 
-            builder.Entity<Mailbox>()
-                .HasMany(m => m.Managers)
-                .WithOne(mm => mm.Mailbox)
-                .HasForeignKey(mm => mm.MailboxId)
-                .OnDelete(DeleteBehavior.Cascade);
+            
                 
             builder.Entity<Email>()
                 .HasMany(e => e.EmailManagers)

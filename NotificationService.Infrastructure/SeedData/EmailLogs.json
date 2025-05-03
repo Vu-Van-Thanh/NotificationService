@@ -5,7 +5,7 @@
         "TemaplateId": "BCB713DA-C191-44E7-AF41-1A2C82A6F892",
         "EmailHeader": "Thông báo lương tháng",
         "EmailBody": "Chào John Doe,<br><br>Bạn đã làm việc được 22 ngày trong tháng này.<br>Tổng lương của bạn: 25,000,000 VND.<br>Hãy kiểm tra bảng lương chi tiết tại: <a href=\"https://payroll.example.com\">Bảng lương</a><br><br>Trân trọng,<br>Phòng Nhân sự",
-        "Status": "Sent",
+        "Status": 0,
         "CreatedAt": "2025-04-04T08:30:00"
     },
     {
@@ -14,7 +14,7 @@
         "TemaplateId": "F727EDC7-B524-4322-946C-578117F6B434",
         "EmailHeader": "Chào mừng nhân viên mới",
         "EmailBody": "Chào Alice Smith,<br><br>Chào mừng bạn đến với công ty ABC Corp!<br>Ngày làm việc đầu tiên của bạn là: 2025-04-05.<br>Bạn sẽ làm việc tại phòng ban: Marketing.<br><br>Hãy liên hệ hr@example.com nếu bạn có bất kỳ thắc mắc nào.<br><br>Chúc bạn một khởi đầu thuận lợi!<br>Phòng Nhân sự",
-        "Status": "Sent",
+        "Status": 0,
         "CreatedAt": "2025-04-04T09:00:00"
     },
     {
@@ -23,7 +23,7 @@
         "TemaplateId": "08695AB8-9021-4564-857A-029C848912E7",
         "EmailHeader": "Nhắc nhở ngày nghỉ phép",
         "EmailBody": "Chào David Nguyen,<br><br>Bạn hiện có 5 ngày nghỉ phép còn lại trong năm.<br>Hãy lên kế hoạch nghỉ phép sớm để tránh hết hạn!<br><br>Trân trọng,<br>Phòng Nhân sự",
-        "Status": "Failed",
+        "Status": 0,
         "CreatedAt": "2025-04-04T10:15:00"
     },
     {
@@ -32,7 +32,7 @@
         "TemaplateId": "CF3DDCF8-2F5C-400A-BA5F-B57C5BB9CEEA",
         "EmailHeader": "Cảnh báo bảo mật",
         "EmailBody": "Chào Security Team,<br><br>Chúng tôi phát hiện một hoạt động đăng nhập đáng ngờ từ IP: 192.168.1.101.<br>Nếu đây không phải là bạn, vui lòng đổi mật khẩu ngay lập tức và báo cáo với IT.<br><br>Trân trọng,<br>Phòng IT",
-        "Status": "Sent",
+        "Status": 0,
         "CreatedAt": "2025-04-04T11:00:00"
     }
 ]

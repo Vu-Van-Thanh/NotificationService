@@ -32,7 +32,6 @@ namespace NotificationServiceRegistry
             services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
             services.AddScoped<IMailboxRepository, MailboxRepository>();
             services.AddScoped<IEmailRepository, EmailRepository>();
-            services.AddScoped<IMailboxManagerRepository, MailboxManagerRepository>();
             services.AddScoped<IEmailManagerRepository, EmailManagerRepository>();
             
             // Đăng ký Service
@@ -41,12 +40,12 @@ namespace NotificationServiceRegistry
             services.AddScoped<IEmailTemplateService, EmailTemplateService>();
             services.AddScoped<IMailboxService, MailboxService>();
             services.AddScoped<IEmailService, EmailService>();
-            services.AddScoped<IMailboxManagerService, MailboxManagerService>();
             services.AddScoped<IEmailManagerService, EmailManagerService>();
             services.AddScoped<IKafkaHandler<KafkaRequest<MailBoxCreate>>, MailBoxCreateHandler>();
             services.AddScoped<IEventProducer, NotifycationProducer>();
             services.AddScoped<IKafkaHandler<KafkaRequest<TemplateRequest>>, TemplateHandler>();
             services.AddScoped<IKafkaHandler<KafkaRequest<List<MailContent>>>, SendMailHandler>();
+            services.AddHostedService<NotifycationConsumer>();
 
             // Đăng ký AutoMapper
             services.AddAutoMapper(typeof(MappingProfile));
