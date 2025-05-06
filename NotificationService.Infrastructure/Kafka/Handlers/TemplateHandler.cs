@@ -24,7 +24,8 @@ namespace NotificationService.Infrastructure.Kafka.Handlers
         }
         public async Task HandleAsync(KafkaRequest<TemplateRequest> message)
         {
-            EmailTemplateDTO template = await _emailTemplateService.GetByIdAsync(message.Filter.TemplateId);
+            EmailTemplateDTO template = await _emailTemplateService.GetByIdAsync(Guid.Parse(message.Filter.TemplateId));
+            Console.WriteLine("Template DTO : {0}", template);
             List<SearchStage> searchStages = ParseSearchSQLCMD(template.SearchSQLCMD);
             KafkaResponse<TemplateDTO> kafkaResponse = new KafkaResponse<TemplateDTO>
             {
@@ -42,21 +43,39 @@ namespace NotificationService.Infrastructure.Kafka.Handlers
             var stages = new List<SearchStage>();
             var stageParts = input.Split("||", StringSplitOptions.RemoveEmptyEntries);
 
+
             foreach (var rawStage in stageParts)
             {
+                Console.WriteLine(rawStage.Trim().ToLower() + "-----------------");
                 var trimmed = rawStage.Trim();
                 if (!trimmed.StartsWith("stage")) continue;
 
+                // Extract stage number
                 var stageNumberMatch = Regex.Match(trimmed, @"stage\s+(\d+)\s*:");
                 if (!stageNumberMatch.Success)
                     throw new Exception($"Invalid stage header: {trimmed}");
 
                 int stageNumber = int.Parse(stageNumberMatch.Groups[1].Value);
 
-                var segments = Regex.Matches(trimmed, @"\{(.*?)\}")
-                                    .Cast<Match>()
-                                    .Select(m => m.Groups[1].Value.Trim())
-                                    .ToList();
+                // Extract 4 segments inside {...}
+                /*List<string> segments = new();
+                int index = 0;
+                while (segments.Count < 4 && index < trimmed.Length)
+                {
+                    int start = trimmed.IndexOf('{', index);
+                    if (start == -1) break;
+
+                    int end = trimmed.IndexOf('}', start + 1);
+                    if (end == -1) break;
+
+                    string content = trimmed.Substring(start + 1, end - start - 1);
+                    segments.Add(content.Trim());
+                    index = end + 1;
+                }*/
+                var segmentMatches = Regex.Matches(trimmed, @"\{(.*?)\}", RegexOptions.Singleline);
+                var segments = segmentMatches.Cast<Match>()
+                                             .Select(m => m.Groups[1].Value.Trim())
+                                             .ToList();
 
                 if (segments.Count != 4)
                     throw new Exception($"Invalid stage format at stage {stageNumber}");
@@ -80,11 +99,12 @@ namespace NotificationService.Infrastructure.Kafka.Handlers
                                         .Select(v => v.Trim())
                                         .ToList();
 
-                // Parse DependencyStages (optional)
+                // Parse DependencyStages
                 var depStages = segments[3].Split(',', StringSplitOptions.RemoveEmptyEntries)
                                         .Select(s => int.Parse(s.Trim()))
                                         .ToList();
 
+                Console.WriteLine("Stage added : {0} - {1} - {2} - {3} - {4} ", stageNumber, sql, depVars, outVars, depStages);
                 stages.Add(new SearchStage
                 {
                     StageNumber = stageNumber,
@@ -98,6 +118,7 @@ namespace NotificationService.Infrastructure.Kafka.Handlers
             return stages;
         }
 
-        
+
+
     }
 }
