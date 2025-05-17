@@ -47,7 +47,7 @@ namespace NotificationServiceRegistry
             services.AddScoped<IKafkaHandler<KafkaRequest<TemplateRequest>>, TemplateHandler>();
             services.AddScoped<IKafkaHandler<KafkaRequest<List<MailContent>>>, SendMailHandler>();
             services.Configure<KafkaSettings>(configuration.GetSection("Kafka"));
-            services.AddHostedService<NotifycationConsumer>();
+            //services.AddHostedService<NotifycationConsumer>();
 
             // Đăng ký AutoMapper
             services.AddAutoMapper(typeof(MappingProfile));
@@ -69,6 +69,16 @@ namespace NotificationServiceRegistry
                     }
                 });
      
+            });
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAllOrigins",
+                    builder =>
+                    {
+                        builder.AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader();
+                    });
             });
 
             return services;

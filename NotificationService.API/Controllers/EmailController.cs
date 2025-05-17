@@ -10,13 +10,16 @@ namespace NotificationService.API.Controllers
     {
         private readonly IEmailService _emailService;
         private readonly IEmailManagerService _emailManagerService;
+        private readonly IMailboxService _mailboxService;
 
         public EmailController(
             IEmailService emailService,
-            IEmailManagerService emailManagerService)
+            IEmailManagerService emailManagerService,
+            IMailboxService mailboxService)
         {
             _emailService = emailService;
             _emailManagerService = emailManagerService;
+            _mailboxService = mailboxService;
         }
 
         [HttpGet]
@@ -30,6 +33,18 @@ namespace NotificationService.API.Controllers
         public async Task<IActionResult> GetById(Guid id)
         {
             var result = await _emailService.GetByIdAsync(id);
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
+        [HttpGet("employee")]
+        public async Task<IActionResult> GetByEmployeeEmail(string employeeID)
+        {
+            Guid mailboxId =  (await _mailboxService.GetMailboxIdByEmployeeIdAsync(employeeID));
+            var result = await _emailService.GetByMailboxIdAsync(mailboxId);
             if (result == null)
             {
                 return NotFound();
