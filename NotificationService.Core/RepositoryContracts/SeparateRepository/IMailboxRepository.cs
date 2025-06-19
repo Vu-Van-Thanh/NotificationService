@@ -6,5 +6,6 @@ namespace NotificationService.Core.RepositoryContracts.SeparateRepository
     {
         Task<Mailbox> GetByEmployeeEmailAsync(string email);
         Task<Mailbox> GetByEmployeeIdAsync(string employeeId);
+        Task<List<Mailbox>> GetByEmployeeIdsAsync(List<string> employeeIds);
     }
 } 

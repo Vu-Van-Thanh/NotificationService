@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NotificationService.Core.DTO;
 using NotificationService.Core.Services.SeparateService;
+using Org.BouncyCastle.Bcpg.OpenPgp;
 
 namespace NotificationService.API.Controllers
 {
@@ -31,6 +32,13 @@ namespace NotificationService.API.Controllers
                 return NotFound();
             }
 
+            return Ok(result);
+        }
+
+        [HttpGet("ListMailBoxID")]
+        public async Task<IActionResult> GetListMailBoxID([FromQuery] string employeeIDs)
+        {
+            var result = await _mailboxService.GetListMailBoxIDAsync(employeeIDs);
             return Ok(result);
         }
 
