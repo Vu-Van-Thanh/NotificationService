@@ -16,7 +16,9 @@ namespace NotificationService.Core.Domain.Entities
         public bool IsStarred { get; set; } = false;
         public bool IsDeleted { get; set; } = false;
         public MailStatus Status { get; set; } = MailStatus.Pendding;
-        
+
+        public Guid? RefId { get; set; } 
+
         // Foreign key for Mailbox
         public Guid MailboxId { get; set; }
         

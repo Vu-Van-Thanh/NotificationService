@@ -12,6 +12,7 @@ namespace NotificationService.Core.Services.SeparateService
         Task<MailboxDTO> GetByEmployeeEmailAsync(string email);
         Task<MailboxDTO> CreateMailboxForEmployeeAsync(string EmployeeId,string employeeEmail, string name, string description);
         Task<Guid> GetMailboxIdByEmployeeIdAsync(string employeeId);
+        Task<List<Guid>> GetMailboxListByEmployeeIdList(string employeeIds);
     }
 
     public class MailboxService : Service<Mailbox, MailboxDTO>, IMailboxService
@@ -53,6 +54,13 @@ namespace NotificationService.Core.Services.SeparateService
         {
             var mailbox = await _mailboxRepository.GetByEmployeeIdAsync(employeeId);
             return mailbox.MailboxId;
+        }
+
+        public async Task<List<Guid>> GetMailboxListByEmployeeIdList(string employeeIds)
+        {
+            List<string> values = employeeIds.Split(',').ToList();
+            List<Mailbox> res = await _mailboxRepository.GetByEmployeeIdListAsync(values);
+            return res.Select(x => x.MailboxId).ToList();
         }
     }
 } 

@@ -46,6 +46,18 @@ namespace NotificationService.API.Controllers
             return Ok(result);
         }
 
+        [HttpGet("ListMailBoxID/{employeeIds}")]
+        public async Task<IActionResult> GetMailBoxId(string employeeIds)
+        {
+            var result = await _mailboxService.GetMailboxListByEmployeeIdList(employeeIds);
+            if (result == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(result);
+        }
+
         [HttpPost]
         public async Task<IActionResult> Upsert(MailboxDTO dto)
         {
