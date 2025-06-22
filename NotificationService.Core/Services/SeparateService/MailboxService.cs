@@ -12,6 +12,7 @@ namespace NotificationService.Core.Services.SeparateService
         Task<MailboxDTO> GetByEmployeeEmailAsync(string email);
         Task<MailboxDTO> CreateMailboxForEmployeeAsync(string EmployeeId,string employeeEmail, string name, string description);
         Task<Guid> GetMailboxIdByEmployeeIdAsync(string employeeId);
+        Task<List<string>> GetListMailBoxIDAsync(string employeeIDs);
         Task<List<Guid>> GetMailboxListByEmployeeIdList(string employeeIds);
     }
 
@@ -33,6 +34,12 @@ namespace NotificationService.Core.Services.SeparateService
             return _mapper.Map<MailboxDTO>(mailbox);
         }
 
+        public async Task<List<string>> GetListMailBoxIDAsync(string employeeIDs)
+        {
+            var employeeIdList = employeeIDs.Split(',').Select(id => id.Trim()).ToList();
+            var mailboxes = await _mailboxRepository.GetByEmployeeIdsAsync(employeeIdList);
+            return mailboxes.Select(m => m.MailboxId.ToString()).ToList();
+        }
         public async Task<MailboxDTO> CreateMailboxForEmployeeAsync(string EmployeeId, string employeeEmail, string name, string description)
         {
             var mailbox = new Mailbox

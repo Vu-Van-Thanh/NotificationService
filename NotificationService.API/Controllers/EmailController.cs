@@ -94,6 +94,32 @@ namespace NotificationService.API.Controllers
             return Ok(result);
         }
 
+        [HttpPost("sendList")]
+        public async Task<IActionResult> SendEmail([FromBody] List<SendEmailRequest> request)
+        {
+            List<EmailDTO> resulList = new List<EmailDTO>();
+            foreach (var emailRequest in request)
+            {
+                EmailDTO result = await _emailService.SendEmailToMailboxAsync(
+                emailRequest.MailboxId,
+                emailRequest.Subject,
+                emailRequest.Body,
+                emailRequest.Sender);
+
+                // Log action
+                await _emailManagerService.LogEmailActionAsync(
+                    result.EmailId,
+                    emailRequest.Sender,
+                    "System",
+                    "Send",
+                    "Email sent to mailbox");
+                resulList.Add(result);
+            }
+
+
+            return Ok(resulList);
+        }
+
         [HttpPut("{id}/mark-as-read")]
         public async Task<IActionResult> MarkAsRead(Guid id, [FromBody] MarkAsReadRequest request)
         {

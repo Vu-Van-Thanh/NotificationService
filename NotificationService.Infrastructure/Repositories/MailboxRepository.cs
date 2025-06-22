@@ -33,5 +33,12 @@ namespace NotificationService.Infrastructure.Repositories
                 .Where(m => employeeIds.Contains(m.EmployeeId))
                 .ToListAsync();
         }
+
+        public async Task<List<Mailbox>> GetByEmployeeIdsAsync(List<string> employeeIds)
+        {
+            return await _context.Mailboxes
+                .Where(m => employeeIds.Contains(m.EmployeeId))
+                .ToListAsync();
+        }
     }
 } 
